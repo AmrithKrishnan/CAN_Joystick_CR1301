@@ -29,7 +29,7 @@ The software for this project is written in Arduino code and uses the SimpleJ193
 
 ## Usage
 
-1. Connect the hardware components (ESP32, MCP2515, joystick, and LEDs) as per the project's requirements.
+1. Connect the hardware components (ESP32, MCP2515, joystick, and LEDs) as per the project's requirements. Using the CR1301 has the benefit of having the LED system inegrated with the joystick.
 2. Upload the provided Arduino code to the board.
 3. Use the joystick to control the LEDs as follows:
    - In manual mode, rotate the joystick to control the LED colors and effects.
