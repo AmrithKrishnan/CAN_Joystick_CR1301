@@ -519,17 +519,22 @@ switch (state) // switch for top level states: manual, color change, reset, auto
                 prevMillis = millis();
             }
         //------update frequency in during phase of state-------
-        // get value of the increments in encoder. store in a variable
-        if(!CR1301.joystick_keys.rotary_direction) // Clockwise direction
-        {   
-            encoder_pos += CR1301.joystick_keys.encoder;
-            if(encoder_pos > 23){encoder_pos = 23;} 
-        }
-        else // Counter Clockwise direction
+        //if state for debouncing
+        if(CR1301.joystick_keys.encoder != prev_keys.encoder)
         {
-            encoder_pos -= CR1301.joystick_keys.encoder;
-            if(encoder_pos < -23){encoder_pos = -23;}
+        // get value of the increments in encoder. store in a variable
+            if(!CR1301.joystick_keys.rotary_direction) // Clockwise direction
+            {   
+                encoder_pos += CR1301.joystick_keys.encoder;
+                if(encoder_pos > 23){encoder_pos = 23;} 
+            }
+            else // Counter Clockwise direction
+            {
+                encoder_pos -= CR1301.joystick_keys.encoder;
+                if(encoder_pos < -23){encoder_pos = -23;}
+            }
         }
+        Serial.println(encoder_pos);
         // ---Set the frequency based on rotary position
         if(encoder_pos >= 0 && encoder_pos < 6){transition_time = 750;}
         if(encoder_pos >= 6 && encoder_pos < 12){transition_time = 600;}
@@ -601,5 +606,4 @@ switch (state) // switch for top level states: manual, color change, reset, auto
     break;
 }
 prev_keys = CR1301.joystick_keys; // giving value at end of loop. so it will hold prev loop values in next loop
-Serial.println(state);
 }
