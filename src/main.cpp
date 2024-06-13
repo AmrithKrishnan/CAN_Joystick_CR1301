@@ -601,4 +601,5 @@ switch (state) // switch for top level states: manual, color change, reset, auto
     break;
 }
 prev_keys = CR1301.joystick_keys; // giving value at end of loop. so it will hold prev loop values in next loop
+Serial.println(state);
 }
