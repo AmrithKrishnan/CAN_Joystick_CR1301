@@ -534,7 +534,6 @@ switch (state) // switch for top level states: manual, color change, reset, auto
                 if(encoder_pos < -23){encoder_pos = -23;}
             }
         }
-        Serial.println(encoder_pos);
         // ---Set the frequency based on rotary position
         if(encoder_pos >= 0 && encoder_pos < 6){transition_time = 750;}
         if(encoder_pos >= 6 && encoder_pos < 12){transition_time = 600;}
